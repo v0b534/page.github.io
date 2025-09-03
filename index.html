@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pantalla de Inicio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="top-bar">
+    <div class="logo">🜲 Rey del Blackjack</div>
+    <div class="player-info">
+      <div id="balance-display">
+        <span id="player-money">300</span>
+        <span class="chip red">♠</span>
+      </div>          
+    </div>
+  </header> 
+
+  <div id="start-board">
+    <div id="inicio-container">
+      <img src="rey-removebg-preview.png" alt="Imagen de Inicio" />
+      <p>Bienvenido a el Rey del Blackjack, por ser tu primera vez ingresando a la página te regalamos ¡300 fichas!</p>
+      
+      <a href="intro.html" class="start-button">¡Comienza a Ganar!</a>
+
+      <!-- Términos y condiciones -->
+      <div id="terms-container">
+        <small>
+          Al hacer clic en “Comienza a Ganar”, aceptas nuestros 
+          <a href="#" id="terms-link">Términos y Condiciones</a>.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup de Términos y Condiciones -->
+  <div id="terms-popup" class="popup hidden" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+    <div class="popup-content">
+      <button id="terms-close" class="popup-close-btn" aria-label="Cerrar Términos y Condiciones">&times;</button>
+      <h2 id="terms-title">Términos y Condiciones</h2>
+      <p>
+        Bienvenido a El Rey del Blackjack. Este sitio web es una plataforma de entretenimiento ficticia diseñada con fines educativos y recreativos. Todas las fichas otorgadas dentro del juego son virtuales, no tienen valor económico y no pueden ser compradas, vendidas ni canjeadas por dinero o productos reales. No existe ningún sistema de pago ni de recompensas, ya que el objetivo es brindar una experiencia lúdica sin implicaciones financieras.
+
+La página incorpora elementos de prevención de la ludopatía. A lo largo del juego se muestran anuncios con enlaces a organizaciones de ayuda para personas que enfrentan problemas con el juego, como Jugadores Anónimos, jugarbien.es o Gamblers Anonymous. Estas recomendaciones tienen como fin principal concientizar sobre los riesgos del juego compulsivo y ofrecer apoyo a quienes lo necesiten.
+
+Con el mismo propósito, el sitio cuenta con un temporizador que, tras 30 minutos de juego continuo, activa un recordatorio para que el usuario haga una pausa. Este mecanismo busca fomentar un uso saludable y responsable del tiempo dedicado a la actividad.
+
+Al utilizar este sitio y hacer clic en el botón “Comienza a Ganar”, el usuario acepta estas condiciones y reconoce que se trata de una simulación sin valor económico. Además, declara ser mayor de 18 años, comprendiendo que, aunque se trata de una plataforma sin apuestas reales, el contenido puede no ser apropiado para menores.
+
+Si en algún momento sentís que el juego deja de ser una diversión o genera malestar, te alentamos a que busques apoyo. Estás a tiempo y no estás solo.
+      </p>
+    </div>
+  </div>
+
+  <!-- Script para abrir y cerrar el popup -->
+  <script>
+    const termsLink = document.getElementById('terms-link');
+    const termsPopup = document.getElementById('terms-popup');
+    const termsClose = document.getElementById('terms-close');
+
+    termsLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      termsPopup.classList.remove('hidden');
+    });
+
+    termsClose.addEventListener('click', function() {
+      termsPopup.classList.add('hidden');
+    });
+
+    // Opcional: cerrar si se hace clic fuera del popup
+    window.addEventListener('click', function(event) {
+      if (event.target === termsPopup) {
+        termsPopup.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
