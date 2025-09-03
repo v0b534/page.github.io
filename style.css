@@ -27,7 +27,7 @@ body::before {
     #7B0000 12px,
     #7B0000 24px
   );
-  animation: scrollDown 2.5s linear infinite;
+  animation: scrollDown 3s linear infinite;
   will-change: transform;
   z-index: -1;
 }
@@ -619,4 +619,5 @@ h1 {
   overflow-y: auto;       /* activa scroll vertical si es necesario */
   word-wrap: break-word;  /* evita que las palabras largas salgan del contenedor */
 }
+
 
