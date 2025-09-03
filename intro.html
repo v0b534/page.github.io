@@ -8,42 +8,47 @@
 </head>
 <body>
 
-    <header id="top-bar">
-        <div class="logo">🜲 Rey del Blackjack</div>
-        <div class="player-info">
-          <div id="balance-display">
-            <span id="player-money">300</span>
-            <span class="chip red">♠</span>
-          </div>          
-        </div>
-      </header>      
+  <!-- Encabezado con logo del juego y saldo del jugador -->
+  <header id="top-bar">
+    <div class="logo">🜲 Rey del Blackjack</div>
+    <div class="player-info">
+      <div id="balance-display">
+        <span id="player-money">300</span>
+        <span class="chip red">♠</span>
+      </div>          
+    </div>
+  </header>      
 
-<!-- Agrupa apuesta y anuncio en un solo bloque -->
-<div style="width:100%;max-width:400px;margin:0 auto;">
-  <div class="betting" role="group" aria-label="Apuesta">
-    <label for="bet-input">Apuesta:</label>
-    <input id="bet-input" type="number" min="1" value="50" placeholder="Ingresa tu apuesta" aria-describedby="balance-display" />
-    <button id="place-bet" type="button">Apostar</button>
-  </div>
-  <!-- Sección de anuncios con imágenes escaladas y alternancia automática -->
-  <div id="ads-section" style="margin-top: 20px; text-align: center;">
-    <a id="ad-link" href="#" target="_blank" rel="noopener">
-      <img id="ad-img" src="" alt="Publicidad" style="max-width: 350px; max-height: 430px; width: 100%; height: 500px; object-fit: contain; border-radius:8px; box-shadow:0 2px 8px #0002;">
-    </a>
-  </div>
-</div> <!-- ← CIERRA AQUÍ el div de agrupación -->
+  <!-- Contenedor principal para la apuesta y la publicidad -->
+  <div style="width:100%; max-width:400px; margin:0 auto;">
+    
+    <!-- Sección para ingresar la apuesta -->
+    <div class="betting" role="group" aria-label="Apuesta">
+      <label for="bet-input">Apuesta:</label>
+      <input id="bet-input" type="number" min="1" value="50" placeholder="Ingresa tu apuesta" aria-describedby="balance-display" />
+      <button id="place-bet" type="button">Apostar</button>
+    </div>
 
-<!-- Animación de ficha de poker al ganar -->
-<div id="win-chip-animation" class="hidden">
-  <div class="chip-poker">
-    <div class="chip-inner"></div>
-    <div class="chip-text">♠</div>
-  </div>
-  <div id="win-chip-text" class="win-chip-text"></div>
-</div>
+    <!-- Espacio para anuncios o mensajes de concientización -->
+    <div id="ads-section" style="margin-top: 20px; text-align: center;">
+      <a id="ad-link" href="#" target="_blank" rel="noopener">
+        <img id="ad-img" src="" alt="Publicidad" style="max-width: 350px; max-height: 430px; width: 100%; height: 500px; object-fit: contain; border-radius:8px; box-shadow:0 2px 8px #0002;">
+      </a>
+    </div>
+  </div> <!-- Fin del contenedor de apuesta y anuncios -->
 
-  <!-- Tablero de juego -->
+  <!-- Animación que muestra una ficha al ganar -->
+  <div id="win-chip-animation" class="hidden">
+    <div class="chip-poker">
+      <div class="chip-inner"></div>
+      <div class="chip-text">♠</div>
+    </div>
+    <div id="win-chip-text" class="win-chip-text"></div>
+  </div>
+
+  <!-- Tablero de juego principal -->
   <main id="game-board" aria-label="Tablero de juego de Blackjack" role="main">
+
     <!-- Mano del Dealer -->
     <section class="hand" id="dealer-hand" aria-label="Mano del dealer">
       <h2>Dealer</h2>
@@ -65,11 +70,11 @@
       <button id="restart" type="button">Reiniciar</button>
     </div>
 
-    <!-- Mensajes dinámicos -->
+    <!-- Mensaje de estado del juego -->
     <div id="message" role="alert" aria-live="polite"></div>
   </main>
 
-  <!-- Popup modal para pérdida -->
+  <!-- Modal que aparece cuando el jugador pierde -->
   <div
     id="popup"
     class="popup hidden"
@@ -85,27 +90,28 @@
     </div>
   </div>
 
-<div id="timeout-popup" class="popup hidden">
-  <div class="popup-content" id="timeout-message">
-    <h2>¡Tiempo agotado!</h2>
-    <p>Has estado apostando por mucho tiempo. Tómate un descanso.</p>
-    <p>
-      Si sigues pensando en apostar, podría interesarte este sitio
-      <a href="https://www.redap.com.ar/?gad_source=1&gad_campaignid=21299947602&gbraid=0AAAAApjx3J8fVWRj-3fNXRZmm4DQK6nF4&gclid=EAIaIQobChMIwaTD6J-wjwMVq1lIAB2jrw0mEAAYASAAEgJzp_D_BwE" target="_blank" rel="noopener noreferrer">aquí</a>.
-    </p>
+  <!-- Modal de recordatorio por tiempo de juego prolongado -->
+  <div id="timeout-popup" class="popup hidden">
+    <div class="popup-content" id="timeout-message">
+      <h2>¡Tiempo agotado!</h2>
+      <p>Has estado apostando por mucho tiempo. Tómate un descanso.</p>
+      <p>
+        Si sentís que es difícil parar, quizás te interese visitar este sitio:
+        <a href="https://www.redap.com.ar/?gad_source=1&gad_campaignid=21299947602&gbraid=0AAAAApjx3J8fVWRj-3fNXRZmm4DQK6nF4&gclid=EAIaIQobChMIwaTD6J-wjwMVq1lIAB2jrw0mEAAYASAAEgJzp_D_BwE" target="_blank" rel="noopener noreferrer">Red de Apoyo</a>.
+      </p>
+    </div>
   </div>
-</div>
 
-<!-- Popup: Sin fichas -->
-<div class="popup hidden" id="no-chips-popup">
-  <div class="popup-content">
-    <span class="popup-close-btn" onclick="closePopup('no-chips-popup')">&times;</span>
-    <h2>¡Sin fichas!</h2>
-    <p>No tienes suficientes fichas para hacer una apuesta.</p>
+  <!-- Modal que aparece cuando no hay fichas disponibles -->
+  <div class="popup hidden" id="no-chips-popup">
+    <div class="popup-content">
+      <span class="popup-close-btn" onclick="closePopup('no-chips-popup')">&times;</span>
+      <h2>¡Sin fichas!</h2>
+      <p>No tienes suficientes fichas para hacer una apuesta.</p>
+    </div>
   </div>
-</div>
 
-  <!-- Script principal -->
+  <!-- Script principal del juego -->
   <script src="script.js"></script>
 </body>
 </html>
