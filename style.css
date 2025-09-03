@@ -38,7 +38,7 @@ body::before {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-27px); /* Igual al patrón para bucle perfecto */
+    transform: translateY(-30px); /* Igual al patrón para bucle perfecto */
   }
 }
 
@@ -619,6 +619,7 @@ h1 {
   overflow-y: auto;       /* activa scroll vertical si es necesario */
   word-wrap: break-word;  /* evita que las palabras largas salgan del contenedor */
 }
+
 
 
 
